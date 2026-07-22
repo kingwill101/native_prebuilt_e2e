@@ -3,8 +3,8 @@ default:
 
 stages:
   - build
-  - release
   - update
+  - release
 
 variables:
   PUB_CACHE: "$CI_PROJECT_DIR/.pub-cache"
