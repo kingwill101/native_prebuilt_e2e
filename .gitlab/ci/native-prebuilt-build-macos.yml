@@ -1,7 +1,7 @@
 native_prebuilt:build:macos:
   stage: build
   tags:
-    - saas-macos-medium-m1
+    - saas-macos-large-m2pro
   image: macos-26-xcode-26
   before_script:
     - if ! command -v dart >/dev/null 2>&1; then brew update && brew install dart; fi
