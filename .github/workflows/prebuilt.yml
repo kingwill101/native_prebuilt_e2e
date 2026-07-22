@@ -31,16 +31,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: dart-lang/setup-dart@v1
       - run: dart pub get
-      - name: Build native artifact
-        shell: bash
-        run: |
-          mkdir -p build/${{ matrix.platform }}
-          echo "TODO: compile src/native/demo.c for ${{ matrix.platform }}"
-          echo "42" > build/${{ matrix.platform }}/artifact.txt
-      - uses: actions/upload-artifact@v4
-        with:
-          name: native_prebuilt_e2e-${{ matrix.platform }}
-          path: build/${{ matrix.platform }}
+      - name: Scaffold native build step
+        run: echo "TODO: build native artifact with the package's build hook and native toolchain"
 
   update-manifest:
     needs: [build]

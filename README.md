@@ -2,6 +2,8 @@
 
 End-to-end validation repo for `native_prebuilt`.
 
+This repo expects `native_prebuilt: ^0.0.1` from pub.dev once that release is published. Until then, use a temporary local override for development.
+
 This repo shows the full stack:
 
 - `hooks` build hook
@@ -41,5 +43,7 @@ dart run native_prebuilt manifest update \
 2. Run `native_prebuilt manifest update`
 3. Commit the generated manifest
 4. Publish/tag the release
+
+The release workflow is a scaffold for the package's normal native-toolchain-driven build and manifest update flow.
 
 The hook falls back to native compilation when prebuilt downloads are not available.
