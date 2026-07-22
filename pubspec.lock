@@ -405,10 +405,10 @@ packages:
     dependency: "direct main"
     description:
       name: native_prebuilt
-      sha256: "22f1f60d7231a0f9626d7c610f1c74f6a6d3c94415a95e127ed91a4700a34e8a"
+      sha256: a207fdbe9b4bdfbb27fbda8343ac9fa2b30467855402f171d4eccfd53331354a
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.3"
+    version: "0.0.4"
   native_toolchain_c:
     dependency: "direct main"
     description:
