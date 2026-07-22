@@ -5,7 +5,7 @@ library_stem: native_prebuilt_e2e
 release:
   provider: gitlab
   project: kingwill101/native_prebuilt_e2e
-  tag: native_prebuilt_e2e-v0.0.1
+  tag: native_prebuilt_e2e-v0.0.6
 artifacts:
   linux-x64:
     archive: native_prebuilt_e2e-linux-x64.tar.gz

@@ -2,7 +2,7 @@
 
 End-to-end validation repo for `native_prebuilt`.
 
-This repo uses `native_prebuilt: ^0.0.5` from pub.dev.
+This repo uses `native_prebuilt: ^0.0.6` from pub.dev.
 
 This repo shows the full stack:
 
@@ -26,7 +26,9 @@ src/native/demo.c
 src/native/demo.h
 .github/workflows/release.yml
 .gitlab-ci.yml
-.gitlab/ci/*.yml
+.gitlab/ci/native-prebuilt-build-*.yml
+.gitlab/ci/native-prebuilt-release.yml
+.gitlab/ci/native-prebuilt-update-manifest.yml
 ```
 
 ## Local development
