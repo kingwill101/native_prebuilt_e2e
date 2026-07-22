@@ -1,11 +1,8 @@
-import 'dart:io';
-
+import 'package:native_prebuilt_e2e/native_prebuilt_e2e.dart';
 import 'package:test/test.dart';
 
 void main() {
-  test('repo scaffold exists', () {
-    expect(File('hook/build.dart').existsSync(), isTrue);
-    expect(File('native_prebuilt.yaml').existsSync(), isTrue);
-    expect(File('src/native/demo.c').existsSync(), isTrue);
+  test('native asset returns the expected answer', () {
+    expect(NativePrebuiltE2e.open().answer(), 42);
   });
 }

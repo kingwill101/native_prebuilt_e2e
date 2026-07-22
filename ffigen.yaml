@@ -1,0 +1,9 @@
+name: NativePrebuiltE2eBindings
+output: lib/src/ffi/native_prebuilt_e2e_bindings.g.dart
+headers:
+  entry-points:
+    - src/native/demo.h
+  include-directives:
+    - src/native/demo.h
+compiler-opts:
+  - -Isrc/native

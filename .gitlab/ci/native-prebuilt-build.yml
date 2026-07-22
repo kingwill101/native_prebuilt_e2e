@@ -1,0 +1,11 @@
+native_prebuilt:build:
+  stage: build
+  script:
+    - apt-get update
+    - apt-get install -y --no-install-recommends build-essential clang pkg-config cmake ninja-build libclang-dev
+    - dart pub get
+    - "$BUILD_COMMAND"
+  artifacts:
+    when: always
+    paths:
+      - build/

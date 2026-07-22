@@ -2,24 +2,31 @@
 
 End-to-end validation repo for `native_prebuilt`.
 
-This repo uses `native_prebuilt: ^0.0.1` from pub.dev.
+This repo uses `native_prebuilt: ^0.0.3` from pub.dev.
 
 This repo shows the full stack:
 
 - `hooks` build hook
 - `native_prebuilt` manifest + resolver
 - native source fallback via `native_toolchain_c`
+- `ffigen` bindings that call the built native asset
 - release metadata YAML for prebuilt publication
-- workflow scaffolding for the release pipeline
+- workflow scaffolding for GitHub Actions and GitLab CI
 
 ## Layout
 
 ```text
+bin/main.dart
+ffigen.yaml
 hook/build.dart
 native_prebuilt.yaml
+lib/src/ffi/native_prebuilt_e2e.dart
 lib/src/hook/demo_prebuilts.g.dart
 src/native/demo.c
+src/native/demo.h
 .github/workflows/release.yml
+.gitlab-ci.yml
+.gitlab/ci/*.yml
 ```
 
 ## Local development
@@ -47,3 +54,4 @@ dart run native_prebuilt manifest update \
 The release workflow is a scaffold for the package's normal native-toolchain-driven build and manifest update flow.
 
 The hook falls back to native compilation when prebuilt downloads are not available.
+The GitLab CI scaffold uses the official Dart Docker image and runs `dart test` so hooks are executed automatically.

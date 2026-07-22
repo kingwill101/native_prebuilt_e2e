@@ -1,0 +1,23 @@
+default:
+  image: dart:stable
+
+stages:
+  - build
+  - release
+  - update
+
+variables:
+  PUB_CACHE: "$CI_PROJECT_DIR/.pub-cache"
+  BUILD_COMMAND: "dart test"
+  CONFIG: "native_prebuilt.yaml"
+  MANIFEST_OUTPUT: "lib/src/hook/demo_prebuilts.g.dart"
+  TAG: "$CI_COMMIT_TAG"
+
+cache:
+  paths:
+    - .pub-cache/
+
+include:
+  - local: '.gitlab/ci/native-prebuilt-build.yml'
+  - local: '.gitlab/ci/native-prebuilt-release.yml'
+  - local: '.gitlab/ci/native-prebuilt-update-manifest.yml'

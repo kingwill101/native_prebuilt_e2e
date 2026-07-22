@@ -1,0 +1,5 @@
+native_prebuilt:release:
+  stage: release
+  image: alpine:3.20
+  script:
+    - echo "Release $TAG"

@@ -1,0 +1,5 @@
+native_prebuilt:update_manifest:
+  stage: update
+  script:
+    - dart pub get
+    - dart run native_prebuilt manifest update --config "$CONFIG" --output "$MANIFEST_OUTPUT" --tag "$TAG"
