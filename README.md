@@ -2,7 +2,7 @@
 
 End-to-end validation repo for `native_prebuilt`.
 
-This repo expects `native_prebuilt: ^0.0.1` from pub.dev once that release is published. Until then, use a temporary local override for development.
+This repo uses `native_prebuilt: ^0.0.1` from pub.dev.
 
 This repo shows the full stack:
 
