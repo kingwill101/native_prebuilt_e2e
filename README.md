@@ -24,7 +24,7 @@ lib/src/ffi/native_prebuilt_e2e.dart
 lib/src/hook/demo_prebuilts.g.dart
 src/native/demo.c
 src/native/demo.h
-.github/workflows/release.yml
+.github/workflows/prebuilt.yml
 .gitlab-ci.yml
 .gitlab/ci/native-prebuilt-build-*.yml
 .gitlab/ci/native-prebuilt-release.yml
@@ -53,7 +53,7 @@ dart run native_prebuilt manifest update \
 3. Commit the generated manifest
 4. Publish/tag the release
 
-The release workflow is a scaffold for the package's normal native-toolchain-driven build and manifest update flow.
+The workflows are scaffolds for the package's native-toolchain-driven build and manifest update flow.
 
 The hook falls back to native compilation when prebuilt downloads are not available.
-The GitLab CI scaffold uses the official Dart Docker image on Linux, GitLab hosted macOS/Windows runners for those platforms, and an opt-in Android/iOS matrix. The build jobs upload `.dart_tool/lib/`, and the manifest update job packages the built Linux library before the release is marked.
+The GitHub Actions workflow mirrors the GitLab CI scaffold so the repo can be exercised on either platform family.

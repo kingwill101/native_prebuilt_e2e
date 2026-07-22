@@ -1,44 +1,96 @@
 name: Prebuilt
 
 on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'native_prebuilt_e2e-v*'
+  pull_request:
   workflow_dispatch:
     inputs:
       tag:
-        description: Release tag
-        required: true
+        description: Tag to stamp into the generated manifest
+        required: false
         type: string
-  push:
-    tags:
-      - 'native_prebuilt_e2e-v*'
 
 permissions:
-  contents: write
+  contents: read
+
+env:
+  PUB_CACHE: ${{ github.workspace }}/.pub-cache
+  CONFIG: native_prebuilt.yaml
+  MANIFEST_OUTPUT: lib/src/hook/demo_prebuilts.g.dart
 
 jobs:
-  build:
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - runner: ubuntu-latest
-            platform: linux-x64
-          - runner: macos-latest
-            platform: macos-arm64
-          - runner: windows-latest
-            platform: windows-x64
-    runs-on: ${{ matrix.runner }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: dart-lang/setup-dart@v1
-      - run: dart pub get
-      - name: Scaffold native build step
-        run: echo "TODO: build native artifact with the package's build hook and native toolchain"
-
-  update-manifest:
-    needs: [build]
+  build-linux:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: dart-lang/setup-dart@v1
+      - name: Install native toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential \
+            clang \
+            cmake \
+            libclang-dev \
+            ninja-build \
+            pkg-config
       - run: dart pub get
-      - run: dart run native_prebuilt manifest update --config native_prebuilt.yaml --output lib/src/hook/demo_prebuilts.g.dart --tag ${{ inputs.tag || github.ref_name }}
+      - run: dart test
+      - uses: actions/upload-artifact@v4
+        with:
+          name: linux-built-library
+          path: .dart_tool/lib/
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+      - run: dart pub get
+      - run: dart test
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows-built-library
+          path: .dart_tool/lib/
+
+  build-macos:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+      - run: dart pub get
+      - run: dart test
+      - uses: actions/upload-artifact@v4
+        with:
+          name: macos-built-library
+          path: .dart_tool/lib/
+
+  update-manifest:
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/')
+    needs:
+      - build-linux
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+      - uses: actions/download-artifact@v4
+        with:
+          name: linux-built-library
+          path: .
+      - run: dart pub get
+      - name: Generate manifest
+        run: |
+          TAG="${{ github.event_name == 'workflow_dispatch' && github.event.inputs.tag || github.ref_name }}"
+          dart run native_prebuilt manifest update \
+            --config "$CONFIG" \
+            --output "$MANIFEST_OUTPUT" \
+            --built-library-dir .dart_tool/lib \
+            --tag "$TAG"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: generated-manifest
+          path: ${{ env.MANIFEST_OUTPUT }}
