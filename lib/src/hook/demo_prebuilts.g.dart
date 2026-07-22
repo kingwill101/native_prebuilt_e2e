@@ -4,9 +4,8 @@ import 'package:native_prebuilt/native_prebuilt.dart';
 
 const demoPrebuilts = PrebuiltManifest(
   schemaVersion: 1,
-  release: GitHubReleaseSource(
-    owner: 'kingwill101',
-    repository: 'native_prebuilt_e2e',
+  release: GitLabReleaseSource(
+    projectPath: 'kingwill101/native_prebuilt_e2e',
     tag: 'native_prebuilt_e2e-v0.0.1',
   ),
   artifacts: {

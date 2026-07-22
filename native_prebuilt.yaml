@@ -3,7 +3,8 @@ package: native_prebuilt_e2e
 asset_name: native_prebuilt_e2e_bindings_generated.dart
 library_stem: native_prebuilt_e2e
 release:
-  repository: kingwill101/native_prebuilt_e2e
+  provider: gitlab
+  project: kingwill101/native_prebuilt_e2e
   tag: native_prebuilt_e2e-v0.0.1
 artifacts:
   linux-x64:

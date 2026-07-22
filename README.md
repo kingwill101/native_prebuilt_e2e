@@ -10,7 +10,7 @@ This repo shows the full stack:
 - `native_prebuilt` manifest + resolver
 - native source fallback via `native_toolchain_c`
 - `ffigen` bindings that call the built native asset
-- release metadata YAML for prebuilt publication
+- release metadata YAML for prebuilt publication (GitLab release source)
 - workflow scaffolding for GitHub Actions and GitLab CI
 
 ## Layout

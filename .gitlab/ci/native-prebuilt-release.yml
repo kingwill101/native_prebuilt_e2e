@@ -1,5 +1,7 @@
 native_prebuilt:release:
   stage: release
   image: alpine:3.20
+  rules:
+    - if: '$CI_COMMIT_TAG'
   script:
     - echo "Release $TAG"
