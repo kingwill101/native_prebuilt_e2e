@@ -56,4 +56,4 @@ dart run native_prebuilt manifest update \
 The release workflow is a scaffold for the package's normal native-toolchain-driven build and manifest update flow.
 
 The hook falls back to native compilation when prebuilt downloads are not available.
-The GitLab CI scaffold uses the official Dart Docker image and runs `dart test` so hooks are executed automatically. The build job uploads `.dart_tool/lib/`, and the manifest update job packages that built library before the release is marked.
+The GitLab CI scaffold uses the official Dart Docker image on Linux, GitLab hosted macOS/Windows runners for those platforms, and an opt-in Android/iOS matrix. The build jobs upload `.dart_tool/lib/`, and the manifest update job packages the built Linux library before the release is marked.
