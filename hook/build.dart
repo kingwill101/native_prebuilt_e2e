@@ -14,7 +14,7 @@ void main(List<String> args) async {
     await PrebuiltCodeAssetBuilder(
       assetName: 'native_prebuilt_e2e_bindings_generated.dart',
       libraryStem: 'native_prebuilt_e2e',
-      manifest: demoPrebuilts,
+      manifest: native_prebuilt_e2ePrebuilts,
       linkModeResolver: (_) => DynamicLoadingBundled(),
       fallback: CBuilder.library(
         name: 'native_prebuilt_e2e',

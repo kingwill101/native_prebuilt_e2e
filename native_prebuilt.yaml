@@ -11,11 +11,3 @@ artifacts:
     archive: native_prebuilt_e2e-linux-x64.tar.gz
     payload:
       type: dynamic_library
-  macos-arm64:
-    archive: native_prebuilt_e2e-macos-arm64.tar.gz
-    payload:
-      type: dynamic_library
-  windows-x64:
-    archive: native_prebuilt_e2e-windows-x64.tar.gz
-    payload:
-      type: dynamic_library
