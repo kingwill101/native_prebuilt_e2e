@@ -5,7 +5,7 @@ native_prebuilt:build:linux:
     - apt-get update
     - apt-get install -y --no-install-recommends build-essential clang pkg-config cmake ninja-build libclang-dev
     - dart pub get
-    - "$BUILD_COMMAND"
+    - dart test
   artifacts:
     when: always
     paths:
