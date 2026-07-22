@@ -8,4 +8,4 @@ native_prebuilt:build:
   artifacts:
     when: always
     paths:
-      - build/
+      - .dart_tool/lib/
