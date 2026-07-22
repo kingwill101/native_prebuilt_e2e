@@ -3,7 +3,7 @@ native_prebuilt:build:windows:
   tags:
     - saas-windows-medium-amd64
   before_script:
-    - if (-not (Get-Command dart -ErrorAction SilentlyContinue)) { choco install dart-sdk -y --no-progress }
+    - if (-not (Get-Command dart -ErrorAction SilentlyContinue)) { choco install dart-sdk -y --no-progress; Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"; refreshenv }
     - dart --version
   script:
     - dart pub get
