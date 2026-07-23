@@ -44,6 +44,8 @@ jobs:
         with:
           name: linux-built-library
           path: .dart_tool/lib/
+          include-hidden-files: true
+          if-no-files-found: error
 
   build-windows:
     runs-on: windows-latest
@@ -56,6 +58,8 @@ jobs:
         with:
           name: windows-built-library
           path: .dart_tool/lib/
+          include-hidden-files: true
+          if-no-files-found: error
 
   build-macos:
     runs-on: macos-15
@@ -68,6 +72,8 @@ jobs:
         with:
           name: macos-built-library
           path: .dart_tool/lib/
+          include-hidden-files: true
+          if-no-files-found: error
 
   update-manifest:
     if: github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/')
