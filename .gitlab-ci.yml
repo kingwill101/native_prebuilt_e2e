@@ -12,6 +12,8 @@ variables:
   CONFIG: "native_prebuilt.yaml"
   MANIFEST_OUTPUT: "lib/src/hook/demo_prebuilts.g.dart"
   BUILT_LIBRARY_DIR: "built-library"
+  RELEASE_ASSETS_DIR: "release-assets"
+  RELEASE_PACKAGE_NAME: "release-assets"
   TAG: "$CI_COMMIT_TAG"
 
 cache:

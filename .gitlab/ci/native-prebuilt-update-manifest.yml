@@ -11,8 +11,9 @@ native_prebuilt:update_manifest:
     - if: '$CI_COMMIT_TAG'
   script:
     - dart pub get
-    - dart run native_prebuilt manifest update --config "$CONFIG" --output "$MANIFEST_OUTPUT" --built-library-dir "$BUILT_LIBRARY_DIR" --tag "$TAG"
+    - dart run native_prebuilt manifest update --config "$CONFIG" --output "$MANIFEST_OUTPUT" --built-library-dir "$BUILT_LIBRARY_DIR" --release-assets-dir "$RELEASE_ASSETS_DIR" --tag "$TAG"
   artifacts:
     when: always
     paths:
       - "$MANIFEST_OUTPUT"
+      - "$RELEASE_ASSETS_DIR/"
