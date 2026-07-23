@@ -8,8 +8,10 @@ stages:
 
 variables:
   PUB_CACHE: "$CI_PROJECT_DIR/.pub-cache"
+  BUILD_COMMAND: "dart test"
   CONFIG: "native_prebuilt.yaml"
   MANIFEST_OUTPUT: "lib/src/hook/demo_prebuilts.g.dart"
+  BUILT_LIBRARY_DIR: "built-library"
   TAG: "$CI_COMMIT_TAG"
 
 cache:
@@ -18,7 +20,5 @@ cache:
 
 include:
   - local: '.gitlab/ci/native-prebuilt-build-linux.yml'
-  - local: '.gitlab/ci/native-prebuilt-build-macos.yml'
-  - local: '.gitlab/ci/native-prebuilt-build-windows.yml'
   - local: '.gitlab/ci/native-prebuilt-release.yml'
   - local: '.gitlab/ci/native-prebuilt-update-manifest.yml'

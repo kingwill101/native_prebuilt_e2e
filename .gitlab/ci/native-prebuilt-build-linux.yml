@@ -5,8 +5,10 @@ native_prebuilt:build:linux:
     - apt-get update
     - apt-get install -y --no-install-recommends build-essential clang pkg-config cmake ninja-build libclang-dev
     - dart pub get
-    - dart test
+    - "$BUILD_COMMAND"
+    - mkdir -p "$BUILT_LIBRARY_DIR"
+    - cp -R .dart_tool/lib/. "$BUILT_LIBRARY_DIR"/
   artifacts:
     when: always
     paths:
-      - .dart_tool/lib/
+      - "$BUILT_LIBRARY_DIR/"

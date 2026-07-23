@@ -2,7 +2,7 @@
 
 End-to-end validation repo for `native_prebuilt`.
 
-This repo uses `native_prebuilt: ^0.0.6` from pub.dev.
+This repo uses `native_prebuilt` from the GitHub mirror (`v0.0.7`) for validation.
 
 This repo shows the full stack:
 

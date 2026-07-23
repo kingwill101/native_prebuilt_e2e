@@ -3,17 +3,11 @@ native_prebuilt:update_manifest:
   needs:
     - job: native_prebuilt:build:linux
       artifacts: true
-    - job: native_prebuilt:build:macos
-      artifacts: true
-      optional: true
-    - job: native_prebuilt:build:windows
-      artifacts: true
-      optional: true
   rules:
     - if: '$CI_COMMIT_TAG'
   script:
     - dart pub get
-    - dart run native_prebuilt manifest update --config "$CONFIG" --output "$MANIFEST_OUTPUT" --built-library-dir .dart_tool/lib --tag "$TAG"
+    - dart run native_prebuilt manifest update --config "$CONFIG" --output "$MANIFEST_OUTPUT" --built-library-dir "$BUILT_LIBRARY_DIR" --tag "$TAG"
   artifacts:
     when: always
     paths:
