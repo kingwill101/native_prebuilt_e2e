@@ -2,7 +2,7 @@
 
 End-to-end validation repo for `native_prebuilt`.
 
-This repo uses `native_prebuilt: ^0.0.7` from pub.dev.
+This repo uses `native_prebuilt` from the GitHub mirror (`v0.0.9`) for validation.
 
 This repo shows the full stack:
 
@@ -10,7 +10,7 @@ This repo shows the full stack:
 - `native_prebuilt` manifest + resolver
 - native source fallback via `native_toolchain_c`
 - `ffigen` bindings that call the built native asset
-- release metadata YAML for prebuilt publication (GitLab release source)
+- release metadata YAML for prebuilt publication (GitHub release source)
 - workflow scaffolding for GitHub Actions and GitLab CI
 
 ## Layout
