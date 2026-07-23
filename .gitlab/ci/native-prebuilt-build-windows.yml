@@ -1,0 +1,13 @@
+native_prebuilt:build:windows:
+  stage: build
+  tags:
+    - windows
+  script:
+    - dart pub get
+    - "$BUILD_COMMAND"
+    - New-Item -ItemType Directory -Force -Path "$env:BUILT_LIBRARY_DIR" | Out-Null
+    - Copy-Item -Recurse -Force ".dart_tool/lib/*" "$env:BUILT_LIBRARY_DIR"
+  artifacts:
+    when: always
+    paths:
+      - "$BUILT_LIBRARY_DIR/"

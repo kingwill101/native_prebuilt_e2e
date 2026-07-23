@@ -9,9 +9,13 @@ on:
         required: false
         type: string
         default: built-library
+      release-assets-dir:
+        required: false
+        type: string
+        default: release-assets
 jobs:
   update-manifest:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: dart run native_prebuilt manifest update --config ${{ inputs.config }} --output lib/src/hook/asset_hashes.dart --built-library-dir ${{ inputs.built-library-dir }}
+      - run: dart run native_prebuilt manifest update --config ${{ inputs.config }} --output lib/src/hook/asset_hashes.dart --built-library-dir ${{ inputs.built-library-dir }} --release-assets-dir ${{ inputs.release-assets-dir }}

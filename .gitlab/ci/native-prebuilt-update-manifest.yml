@@ -3,6 +3,10 @@ native_prebuilt:update_manifest:
   needs:
     - job: native_prebuilt:build:linux
       artifacts: true
+    - job: native_prebuilt:build:macos
+      artifacts: true
+    - job: native_prebuilt:build:windows
+      artifacts: true
   rules:
     - if: '$CI_COMMIT_TAG'
   script:

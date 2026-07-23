@@ -20,5 +20,7 @@ cache:
 
 include:
   - local: '.gitlab/ci/native-prebuilt-build-linux.yml'
+  - local: '.gitlab/ci/native-prebuilt-build-macos.yml'
+  - local: '.gitlab/ci/native-prebuilt-build-windows.yml'
   - local: '.gitlab/ci/native-prebuilt-release.yml'
   - local: '.gitlab/ci/native-prebuilt-update-manifest.yml'

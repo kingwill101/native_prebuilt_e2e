@@ -1,0 +1,13 @@
+native_prebuilt:build:macos:
+  stage: build
+  tags:
+    - macos
+  script:
+    - dart pub get
+    - "$BUILD_COMMAND"
+    - mkdir -p "$BUILT_LIBRARY_DIR"
+    - cp -R .dart_tool/lib/. "$BUILT_LIBRARY_DIR"/
+  artifacts:
+    when: always
+    paths:
+      - "$BUILT_LIBRARY_DIR/"

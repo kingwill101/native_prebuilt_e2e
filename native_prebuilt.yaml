@@ -3,11 +3,19 @@ package: native_prebuilt_e2e
 asset_name: native_prebuilt_e2e_bindings_generated.dart
 library_stem: native_prebuilt_e2e
 release:
-  provider: gitlab
-  project: kingwill101/native_prebuilt_e2e
-  tag: native_prebuilt_e2e-v0.0.6
+  provider: github
+  repository: kingwill101/native_prebuilt_e2e
+  tag: native_prebuilt_e2e-v0.0.10
 artifacts:
   linux-x64:
     archive: native_prebuilt_e2e-linux-x64.tar.gz
+    payload:
+      type: dynamic_library
+  windows-x64:
+    archive: native_prebuilt_e2e-windows-x64.tar.gz
+    payload:
+      type: dynamic_library
+  macos-arm64:
+    archive: native_prebuilt_e2e-macos-arm64.tar.gz
     payload:
       type: dynamic_library
